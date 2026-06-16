@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Favorite Person ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#f7f2ea,#efe4d4);
+    min-height:100vh;
+    overflow-x:hidden;
+    color:#5b4b3f;
+}
+
+.page{
+    display:none;
+    min-height:100vh;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.active{
+    display:flex;
+}
+
+.card{
+    background:rgba(255,255,255,0.88);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    padding:35px;
+    width:90%;
+    max-width:850px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,0.12);
+    animation:fadeIn .8s ease;
+}
+
+h1{
+    color:#8c6f56;
+    margin-bottom:15px;
+}
+
+p{
+    line-height:1.8;
+}
+
+button{
+    background:#d9b99b;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:30px;
+    cursor:pointer;
+    margin:8px;
+    transition:.3s;
+    font-size:16px;
+}
+
+button:hover{
+    background:#c9a98a;
+    transform:translateY(-2px);
+}
+
+.gift-container{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin:25px 0;
+}
+
+.gift-box{
+    width:120px;
+    height:120px;
+    background:#f5ebdf;
+    border-radius:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:50px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.gift-box:hover{
+    transform:scale(1.08);
+}
+
+#giftContent{
+    margin-top:20px;
+}
+
+#giftContent img{
+    width:250px;
+    border-radius:15px;
+}
+
+.slider{
+    margin-top:20px;
+}
+
+.slider img{
+    width:90%;
+    max-width:800px;
+    height:550px;
+    object-fit:contain;
+    border-radius:20px;
+}
+#galleryCaption{
+    margin:15px 0;
+    font-size:18px;
+    color:#8c6f56;
+}
+
+#cuteBoyPhoto{
+    display:none;
+    margin-top:20px;
+}
+
+#cuteBoyPhoto img{
+    width:280px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.letter-card{
+    text-align:left;
+}
+
+#letterText{
+    line-height:1.9;
+}
+
+#flash{
+    position:fixed;
+    inset:0;
+    background:white;
+    display:none;
+    z-index:999;
+}
+
+.heart{
+    position:fixed;
+    color:#f0a7b8;
+    pointer-events:none;
+    animation:floatUp 8s linear forwards;
+}
+
+#finalMessage{
+    margin-top:20px;
+    font-size:20px;
+    color:#c97f92;
+    font-weight:600;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120px);
+        opacity:0;
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div id="flash"></div>
+
+<!-- PAGE 1 -->
+
+<section id="page1" class="page active">
+<div class="card">
+
+<h1>This is for my kunjappiiiii ❤️</h1>
+
+<p>Are you my kungunaappiii?</p>
+
+<button onclick="startJourney()">
+YES ❤️
+</button>
+
+<button onclick="showPage('pageNo')">
+NO 🤨
+</button>
+
+</div>
+</section>
+
+<!-- NO PAGE -->
+
+<section id="pageNo" class="page">
+<div class="card">
+
+
+<p>
+Wait a minute...
+<br><br>
+
+If you're not my kunjappii,
+<br><br>
+
+WHO ARE YOU? 🤨
+<br><br>
+
+WHY ARE YOU HERE? 😂
+</p>
+
+<button onclick="showPage('page1')">
+⬅️ Go Back
+</button>
+
+</div>
+</section>
+
+<!-- GIFTS PAGE -->
+
+<section id="page2" class="page">
+<div class="card">
+
+<h1>Choose Your Gifts 🎁</h1>
+
+<p>For youuuudaaa❤️</p>
+
+<div class="gift-container">
+
+<div class="gift-box" onclick="openGift1()">
+🎁
+</div>
+
+<div class="gift-box" onclick="openGift2()">
+🎁
+</div>
+
+<div class="gift-box" onclick="openGift3()">
+🎁
+</div>
+<audio id="voiceMessage">
+    <source src="voice.mp4" type="audio/mp4">
+</audio>
+</div>
+
+<div id="giftContent"></div>
+
+<button onclick="showPage('page3')">
+Continue ❤️
+</button>
+
+</div>
+</section>
+
+<!-- PHOTO SLIDER PAGE -->
+
+<section id="page3" class="page">
+<div class="card">
+
+<h1>Our Memories📸</h1>
+
+<div class="slider">
+
+<img id="galleryImage" src="photo1.jpeg">
+
+
+<div>
+
+<button onclick="prevPhoto()">
+⬅️
+</button>
+
+<button onclick="nextPhoto()">
+➡️
+</button>
+
+</div>
+
+</div>
+
+<br>
+
+<button onclick="showPage('page4')">
+Next ❤️
+</button>
+
+</div>
+</section>
+<!-- CUTE BOY PHOTO PAGE -->
+
+<section id="page4" class="page">
+<div class="card">
+
+<h1>Can I take a photo of my cute boy? 📸❤️</h1>
+
+<p>
+Smile plssss....
+</p>
+
+<br>
+
+<button id="photoBtn" onclick="takePhoto()">
+📷 Click Here
+</button>
+
+<div id="cuteBoyPhoto">
+
+<img src="him.jpeg" alt="Cute Boy">
+
+<h2 style="margin-top:15px;">
+Very funnyyyyy😂😂
+</h2>
+
+<p>
+You are my favorite person. 🥺❤️
+</p>
+
+<br>
+
+<button onclick="showPage('page5')">
+Continue ❤️
+</button>
+
+</div>
+
+</div>
+</section>
+
+<!-- LETTER PAGE -->
+
+<section id="page5" class="page">
+<div class="card letter-card">
+
+<h1 style="text-align:center;">
+💌 A Letter For You
+</h1>
+
+<div id="letterText">
+
+Hellooo babbyyy❤️,
+
+<br><br>
+
+I LOVE YOUUUU SOOOO MUCHHHHHHH......
+
+<br><br>
+
+You are my favourite person
+
+<br><br>
+
+I really want you to know how much you mean to me. You are the one who makes me happy everyday. 
+
+<br><br>
+I am very lucky to have you. I know that sometimes I annoy you and I am sorry for the times that I have hurt you.
+
+<br><br>
+I love the way you care and thank you so much for being there for me.
+
+<br><br>
+
+I am waiting for our kalyanam😂I love youuuu babyyy ummmmmmmmaaaaahhhhhhh......❤️
+
+</div>
+
+<br>
+
+<div style="text-align:center;">
+
+<button onclick="showPage('page6')">
+Final Surprise ❤️
+</button>
+
+</div>
+
+</div>
+</section>
+
+<!-- FINAL PAGE -->
+
+<!-- DO YOU LOVE ME PAGE -->
+
+<section id="page6" class="page">
+<div class="card">
+
+<h1>❤️ One Important Question ❤️</h1>
+
+<p>
+Do you love me?
+</p>
+
+<br>
+
+<button onclick="showPage('page7')">
+YES ❤️
+</button>
+
+<button onclick="showNoLove()">
+NO 😒
+</button>
+
+<div id="noLoveMsg"></div>
+
+</div>
+</section>
+
+<!-- HOW MUCH PAGE -->
+
+<section id="page7" class="page">
+<div class="card">
+
+<h1>🥺 How Much?</h1>
+
+<br>
+
+<button onclick="sadAnswer()">
+No ishtam
+</button>
+
+<button onclick="sadAnswer()">
+A Little 🤏
+</button>
+
+
+<button onclick="showPage('page8')">
+Infinity ♾️❤️
+</button>
+
+<div id="sadMsg"></div>
+
+</div>
+</section>
+
+<!-- END PAGE -->
+
+<section id="page8" class="page">
+<div class="card">
+
+<h1>❤️ I Love You ❤️</h1>
+
+
+<br><br>
+
+I will be with you forever.
+
+<br><br>
+
+Umma 💋
+
+<br>
+
+Umma 💋
+
+<br>
+
+Umma 💋
+
+<br><br>
+
+❤️ Forever Yours ❤️
+
+</p>
+
+</div>
+</section>
+<script>
+function sadAnswer(){
+
+document.getElementById("sadMsg").innerHTML = `
+
+<div style="
+margin-top:20px;
+padding:20px;
+background:#fff3f3;
+border-radius:15px;
+">
+
+<h3>🥺 Really?</h3>
+
+<p>
+
+Only that much?
+
+<br><br>
+
+I was expecting Infinity... ♾️❤️
+
+<br><br>
+
+I will give you one more chance😒❤️
+
+</p>
+
+</div>
+
+`;
+
+}
+
+function showNoLove(){
+
+document.getElementById("noLoveMsg").innerHTML = `
+
+<p style="margin-top:20px;font-size:18px;">
+
+🤨 Wrong answer.
+
+<br><br>
+
+Please refresh your memory and try again.
+
+😂❤️
+
+</p>
+
+`;
+
+}
+
+function showPage(id){
+
+document.querySelectorAll(".page")
+.forEach(page=>{
+page.classList.remove("active");
+});
+
+document.getElementById(id)
+.classList.add("active");
+
+}
+
+function startJourney(){
+
+document.getElementById("bgMusic")
+.play()
+.catch(()=>{});
+
+showPage("page2");
+
+}
+
+/* GIFT 1 */
+
+function openGift1(){
+
+document.getElementById("giftContent")
+.innerHTML=`
+
+<img src="meme.jpeg">
+
+<p style="margin-top:15px;">
+I LOVE YOU
+</p>
+
+`;
+
+}
+
+/* GIFT 2 */
+
+function openGift2(){
+
+document.getElementById("giftContent").innerHTML = `
+
+<h2>🔒 Secret Gift</h2>
+
+<p>
+Password Hint:
+<br><br>
+Who loves you the most? 😌❤️
+</p>
+
+<input
+type="text"
+id="passwordInput"
+placeholder="Enter Password"
+style="
+padding:10px;
+border-radius:10px;
+border:1px solid #ccc;
+margin-top:10px;
+">
+
+<br><br>
+
+<button onclick="checkPassword()">
+Unlock ❤️
+</button>
+
+<div id="passwordResult"></div>
+
+`;
+
+}
+
+function checkPassword(){
+
+const answer =
+document.getElementById("passwordInput")
+.value
+.toLowerCase();
+
+if(
+answer === "ponnu" ||
+answer === "you" ||
+answer === "punnya"
+){
+
+document.getElementById("passwordResult")
+.innerHTML = `
+
+<div style="margin-top:20px;">
+
+<h3>🎉 Secret Unlocked!</h3>
+
+<p>
+
+The answer was obviously ME 😌❤️
+
+<br><br>
+
+Just a reminder:
+
+You are loved more than you know ❤️
+
+</p>
+
+</div>
+
+`;
+
+}else{
+
+document.getElementById("passwordResult")
+.innerHTML =
+
+"<p style='color:red;'>❌ Wrong Password</p>";
+
+}
+
+}
+/* GIFT 3 */
+
+function openGift3(){
+
+document.getElementById("giftContent")
+.innerHTML = `
+
+<h2>🎧 Hidden Voice Message</h2>
+
+<p>
+
+Only my u are allowed to hear this.
+
+</p>
+
+<br>
+
+<button onclick="unlockVoice()">
+Unlock ❤️
+</button>
+
+<div id="voiceArea"></div>
+
+`;
+
+}
+
+function unlockVoice(){
+
+document.getElementById("voiceArea")
+.innerHTML = `
+
+<p>
+
+🎉 Secret Message Unlocked
+
+</p>
+
+<button onclick="playVoice()">
+
+▶ Play Message
+
+</button>
+
+`;
+
+}
+
+function playVoice(){
+
+document.getElementById("voiceMessage")
+.play();
+
+document.getElementById("voiceArea")
+.innerHTML += `
+
+<p style="margin-top:15px;">
+
+❤️ Message Playing...
+
+</p>
+
+`;
+
+}/* PHOTO GALLERY */
+
+const galleryPhotos = [
+
+{
+image:"photo2.jpeg"
+},
+
+{
+image:"photo3.jpeg"
+
+},
+
+{
+image:"photo4.jpeg"
+
+},
+
+{
+image:"photo5.jpeg"
+
+},
+
+{
+image:"photo6.jpeg"
+}
+
+];
+
+let currentPhoto = 0;
+
+function updateGallery(){
+
+document.getElementById("galleryImage")
+.src = galleryPhotos[currentPhoto].image;
+
+document.getElementById("galleryCaption")
+.innerHTML = galleryPhotos[currentPhoto].caption;
+
+}
+
+function nextPhoto(){
+
+currentPhoto++;
+
+if(currentPhoto >= galleryPhotos.length){
+currentPhoto = 0;
+}
+
+updateGallery();
+
+}
+
+function prevPhoto(){
+
+currentPhoto--;
+
+if(currentPhoto < 0){
+currentPhoto = galleryPhotos.length - 1;
+}
+
+updateGallery();
+
+}
+
+/* PHOTO FLASH */
+
+function takePhoto(){
+
+const flash =
+document.getElementById("flash");
+
+flash.style.display = "block";
+
+setTimeout(()=>{
+
+flash.style.display = "none";
+
+document.getElementById(
+"cuteBoyPhoto"
+).style.display = "block";
+
+document.getElementById(
+"photoBtn"
+).style.display = "none";
+
+},300);
+
+}
+
+
+/* FLOATING HEARTS */
+
+setInterval(()=>{
+
+const heart =
+document.createElement("div");
+
+heart.className = "heart";
+
+heart.innerHTML = "❤️";
+
+heart.style.left =
+Math.random()*100 + "vw";
+
+heart.style.fontSize =
+(20 + Math.random()*15) + "px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},8000);
+
+},700);
+
+</script>
+
+</body>
+</html>
